@@ -22,17 +22,61 @@
 
 
 # not functioning correctly, in my tiv-tac-toe board it prints normal but here it dosnt
+# NEVER USED 
 game_board = ""
+
 def draw():
-    game_board = []
-    board = game_board
+    game_board = ""
     for x in range(-1, 6):
         if x % 2 == 0:
-            board += '|      ' * 4
-            board += '\n|  1   |  2   |  3   |'
+            game_board += '|      ' * 4
+            game_board += f'\n|  {x}   |  {x+1}   |  {x+2}   |'
         else:
-            board +=  ' ______' * 3
-        board += '\n'
+            game_board +=  ' ______' * 3
+        game_board += '\n'
     print(game_board)
 draw()
 
+# def print_game_state(move_array):
+#     # Define header letters:
+#     header_letters = ["A", "B", "C"]
+#     # We order the list
+#     ordered_moves = order_moves(move_array)
+#     # We fill any gaps with #
+#     filled_moves = fill_gaps(ordered_moves)
+#     # convert into a 2d array with only move values:
+#     grid_moves = gridify_moves(filled_moves)
+#     print("  ", end="")
+#     for i in range(0,3):
+#         print(i+1, end="")
+#     print("")
+
+# TODO: \/Focus on this section for solution
+#     for i in range(0,3):
+#         print(header_letters[i], end="")
+#         print(" ", end="")
+#         for j in range(0,3):
+#             print(grid_moves[i][j].grid_value, end="")
+#         print("")
+# Result is : 
+#   1 2 3
+# A X # #
+# B # O #
+# C # # #
+
+# loop 1 loop through x coord from 0 to 3
+#     loop 2 loop through y coord from 0 to 3
+
+
+
+#     x->
+#     ______ ______ ______
+# y   |      |      |      |
+# |   |  0,0 |  1,0 |  2,0 |
+#     ______ ______ ______
+#     |      |      |      |
+#     |  1,0 |  1,1 |  2,1 |
+#     ______ ______ ______
+#     |      |      |      |
+#     |  1   |  2   |  3   |
+#     ______ ______ ______
