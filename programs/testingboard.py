@@ -19,6 +19,9 @@
 # 
 
 #from programs.tic_tac_toe import Board
+
+
+# not functioning correctly, in my tiv-tac-toe board it prints normal but here it dosnt
 game_board = ""
 def draw():
     game_board = []
