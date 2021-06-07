@@ -1,5 +1,5 @@
 game_board = ""
-def draw(x):
+def draw():
     board = ""
     for x in range(-1, 6):
         if x % 2 == 0:
@@ -9,4 +9,4 @@ def draw(x):
             board +=  ' ______' * 3
         board += '\n'
     return board
-draw(game_board)
+draw()
