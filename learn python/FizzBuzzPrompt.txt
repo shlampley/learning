@@ -1,0 +1,39 @@
+Count to 100*
+Every Multiple of 3 is replaced with Fizz
+Every multiple of 5 is replaced with Buzz
+Every multiple of both is replaced with FizzBuzz
+
+Create an application that will output the numbers 1 to 100 following the above game rules
+Do this in an object oriented manner
+
+Example output:
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+.
+.
+.
+
+
+For a bonus:
+Alternate the output numbers with a tab and without any form of whitespace before them:
+
+1
+	2
+Fizz
+	4
+Buzz
+	Fizz
+7

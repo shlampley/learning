@@ -1,0 +1,36 @@
+Overall:
+Main:
+Ask a User for inputs and display the game so that it is a PvP game only.
+Stretch:
+Design an algoroithim to play against.
+
+Part 1:
+Ask the user for inputs on grid locations:
+
+A B C
+# # # 1
+# # # 2
+# # # 3
+
+A1 
+ for example would put the choice here:
+A B C
+X # # 1
+# # # 2
+# # # 3
+
+And then depending on whos turn it is Player 1 should be X then player 2 should be O.
+
+Get the inputs and store them in an array and when the user inputs 'D' for the grid location stop asking and output the array contents.
+
+Example:
+Location: Value:
+A1:X
+A2:O
+A3:X
+
+Accomplish this by creating a TicTac Class that has the attricutes of grid_location and grid_value
+Create getters and setters for these values. If you want to stretch yourself use @property instead of getter and setter.
+https://www.w3schools.com/python/python_classes.asp
+https://www.geeksforgeeks.org/getter-and-setter-in-python/
+Then create an array of TicTac objects. Then look into creating the __repr__ and __str__ methods so you can just say print(tictacobj) or similar without extra logic. https://www.journaldev.com/22460/python-str-repr-functions

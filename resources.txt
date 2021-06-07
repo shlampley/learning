@@ -1,0 +1,9 @@
+https://www.tutorialspoint.com/python/string_isnumeric.htm
+
+https://kodify.net/python/if-else/if-in/
+
+CHEATSHEET: 
+https://learnxinyminutes.com/docs/python/
+
+Python scope:
+https://www.w3schools.com/python/python_scope.asp
