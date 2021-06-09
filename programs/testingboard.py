@@ -27,13 +27,9 @@ game_board = ""
 
 def draw():
     game_board = ""
-    for x in range(-1, 6):
+    for x in range(-1, 2):
         if x % 2 == 0:
-            game_board += '|      ' * 4
-            game_board += f'\n|  {x}   |  {x+1}   |  {x+2}   |'
-        else:
-            game_board +=  ' ______' * 3
-        game_board += '\n'
+            game_board += f' ____________________\n|      |      |      |\n|  {x}   |  {x+1}   |  {x+2}   |\n|______|______|______|\n|      |      |      |\n|  {x+3}   |  {x+4}   |  {x+5}   |\n|______|______|______|\n|      |      |      |\n|  {x+6}   |  {x+7}   |  {x+8}   |\n|______|______|______|'
     print(game_board)
 draw()
 
