@@ -7,30 +7,26 @@ class Board:
     def __init__(self):
         self.board = ""    
     def __str__(self):
-        return "this is a board object"
+        return self.draw()
     def __repr__(self):
         return "this is a board object"    
     
     def draw(self):
-        for x in range(-1, 6):
-            if x % 2 == 0:
-                self.board += '|      ' * 4
-                self.board += '\n|  1   |  2   |  3   |'
-            else:
-                self.board +=  ' ______' * 3
-            self.board += '\n'
+        x = 0
+        self.board = f' ____________________\n|      |      |      |\n|  {x}   |  {x+1}   |  {x+2}   |\n|______|______|______|\n|      |      |      |\n|  {x+3}   |  {x+4}   |  {x+5}   |\n|______|______|______|\n|      |      |      |\n|  {x+6}   |  {x+7}   |  {x+8}   |\n|______|______|______|'
         return self.board
 x1 = Board()
 x1.draw()
-class BoardTile(Board):
-    def __init__(self, player_marker, coordinates):
-        self.player_marker = player_marker
-        self.coordinates = coordinates
-        for x in range(-1, 6):
-            #input("Choose move")
-            break
+print(x1)
+# class BoardTile(Board):
+#     def __init__(self, player_marker, coordinates):
+#         self.player_marker = player_marker
+#         self.coordinates = coordinates
+#         for x in range(-1, 6):
+#             #input("Choose move")
+#             break
     
-    print(x1.board)
+#     print(x1.board)
 
-movelist =[]
-movelist.append(BoardTile("O","B2"))
+# movelist =[]
+# movelist.append(BoardTile("O","B2"))
