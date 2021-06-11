@@ -2,8 +2,8 @@ from itertools import cycle
 
 class Game():
     def __init__(self, win, tie):
-        self.win = win
-        self.tie = tie
+        self.win = []
+        self.tie = []
 
 class Players:
     def __init__(self, name, solo, multi):
@@ -12,6 +12,7 @@ class Players:
         
 class Board:
     def __init__(self):
+        self.win_board = ""
         self.board = ""
         self.moves = self.set_empty_moves()
         self.turns = ["X", "O"]
@@ -29,6 +30,9 @@ class Board:
         
         self.board = f' ____________________\n|      |      |      |\n|  {self.moves[0]}   |  {self.moves[1]}   |  {self.moves[2]}   |\n|______|______|______|\n|      |      |      |\n|  {self.moves[3]}   |  {self.moves[4]}   |  {self.moves[5]}   |\n|______|______|______|\n|      |      |      |\n|  {self.moves[6]}   |  {self.moves[7]}   |  {self.moves[8]}   |\n|______|______|______|'
         return self.board
+    #def get_winnig_board(self):
+    
+    #def save_winnig_board(self):
     #  def get_base_board(self):
     #     x = 0
     #     return f' ____________________\n|      |      |      |\n|  {x}   |  {x+1}   |  {x+2}   |\n|______|______|______|\n|      |      |      |\n|  {x+3}   |  {x+4}   |  {x+5}   |\n|______|______|______|\n|      |      |      |\n|  {x+6}   |  {x+7}   |  {x+8}   |\n|______|______|______|'
@@ -54,6 +58,7 @@ def user_inputs(board):
 
 def game():
     # We need to make a new board
+    win_board = ""
     x1 = Board()
     # We need to display the current board state
     # we need to get the users choice of where to place their move
@@ -61,12 +66,19 @@ def game():
         x1 = user_inputs(x1) # need to store value!!!!!!!!!!!!!!!!!!!!!!!!!!
     # repeat until????
     # print final game state
-    print(x1)
+    return win_board
     # while True:
     #     if x1 == win_board:
     #         print(f"{next} YOU WIN!!!! ")
     #     else:
     #         print(f"{next} YOU WIN!!!! ")
+
+    
+
+    
+
+
+
 game()
 
 # class BoardTile(Board):
