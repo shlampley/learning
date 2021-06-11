@@ -1,5 +1,10 @@
 from itertools import cycle
 
+class Game():
+    def __init__(self, win, tie):
+        self.win = win
+        self.tie = tie
+
 class Players:
     def __init__(self, name, solo, multi):
         self.name = input("name")
@@ -11,7 +16,7 @@ class Board:
         self.moves = self.set_empty_moves()
         self.turns = ["X", "O"]
         self.player_turn = self.get_player_iterator()
-        self.win_board() =
+        # self.win_board() = ########################
     def __str__(self):
         return self.get_board()
     def __repr__(self):
@@ -31,6 +36,10 @@ class Board:
     # Used to get the current turn
     def get_player_iterator(self):
         return cycle(self.turns)
+    
+    # def winner():   #####################
+    #     x2 = Board()
+    #     if x2 ==
 
 
 # Rec
@@ -53,11 +62,11 @@ def game():
     # repeat until????
     # print final game state
     print(x1)
-    while True:
-        if x1 == win_board:
-            print(f"{next} YOU WIN!!!! ")
-        else:
-            print(f"{next} YOU WIN!!!! ")
+    # while True:
+    #     if x1 == win_board:
+    #         print(f"{next} YOU WIN!!!! ")
+    #     else:
+    #         print(f"{next} YOU WIN!!!! ")
 game()
 
 # class BoardTile(Board):
