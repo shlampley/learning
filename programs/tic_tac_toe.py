@@ -55,6 +55,17 @@ def user_inputs(board):
     board.moves[int(choice)] = curr_turn
     return board # returns board with curent player selection
 
+def openingAFileExample():
+    data = ""
+    with open("FILENAME.EXTENSION", "MODE LETTER(r,w,rw)") as fileVarNameGoHere:
+        # MANIPULATE FILE HERE
+        data = file.read()
+    
+def WritingToAFileExample():
+    dataToWrite = "Write me!"
+    with open("FILENAME.EXTENSION", "MODE LETTER(r,w,rw)") as fileVarNameGoHere:
+        # MANIPULATE FILE HERE
+        file.write(dataToWrite)
 
 def game():
     # We need to make a new board
