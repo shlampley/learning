@@ -58,8 +58,7 @@ class Game:
         self.player_turn = self.get_player_iterator()
     def get_player_iterator(self):
         # TODO:Create an array with an X player and an O player with the names of turns[0] and turns[1]
-        # TODO: return cycle of that array
-        return cycle(self.turns)
+        return cycle(self.players)
     def set_players(self):
         # TODO: finish writing this to return the player array
         player_1 = Player(self.turns[0]) # need to designate name using turns[0]
@@ -76,7 +75,7 @@ class Game:
     
     def user_inputs(self):
         print(self.board)
-        curr_turn = next(self.player_turn)
+        curr_turn = next(self.players)
         # Move the line below me into the main game loop and instead
         choice = "10"
         while True:
@@ -116,6 +115,7 @@ class Game:
         for x in self.board.moves:
             os.system("cls")
             self.user_inputs()
+            
             # if self.check_win(x1):
             if self.check_win():
                 print(self.board)
