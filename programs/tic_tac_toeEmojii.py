@@ -17,6 +17,7 @@ class Bot(Player):
         super().__init__(name)
     # CREATE BOT LOGIC
     def move(self, quit_string, board):
+        # TODO: Write bot logic for taking a move here
         ran_num = random.randint(0,8)
         return ran_num
         
