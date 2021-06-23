@@ -1,25 +1,20 @@
 from itertools import cycle
 import os
-import random
 
 class Player:
     def __init__(self, name):
         self.name = name
     
-    def move(self, quit_string, board):
-        return input(f'{self.name} where do you want to move 0-8 or {quit_string} to quit: ')
-    # TODO call game logic for non-bot to take a turn AKA getting input
-         
+    def move(self, callback):
+        callback(self.name)
+        pass
+        # TODO call game logic for non-bot to take a turn AKA getting input
         
     
 class Bot(Player):
     def __init__(self, name):
         super().__init__(name)
     # CREATE BOT LOGIC
-    def move(self, quit_string, board):
-        ran_num = random.randint(0,8)
-        return ran_num
-        
 
 
 class Board:
@@ -54,11 +49,9 @@ class Board:
     
 class Game:
     def __init__(self, win = [], tie = []):
-        self.turns = ["⛌", "◯"] # TODO see line 61
-        self.quitting_chars = ["Q","quit"]
-        self.quit_string = self.create_quit_string()        
+        self.turns = ["⛌", "◯"] # TODO see line 61        
         self.players = self.set_players()
-        self.current_player = None
+        self.quitting_chars = ["Q","quit"]
         self.win = win
         self.tie = tie
         self.winner = ""
@@ -71,7 +64,7 @@ class Game:
     def set_players(self):
         # TODO: finish writing this to return the player array
         player_1 = Player(self.turns[0]) # need to designate name using turns[0]
-        player_2 = Bot(self.turns[1])# need to designate name using turns[1]
+        player_2 = Player(self.turns[1])# need to designate name using turns[1]
         return [player_1, player_2]    
     def check_taken(self, choice):
         if str(self.board.moves[int(choice)]) in self.turns:
@@ -80,22 +73,23 @@ class Game:
         else:
             return False    
 
-    def create_quit_string():
-        return " or ".join([", ".join(self.quitting_chars[:-1]),self.quitting_chars[-1]])
-                # quit_string = " or ".join(["Q, q",self.quitting_chars[-1]])
-                # quit_string = " or ".join(["Q, q","exit"])
-                # quit_string = "Q, q" + " or " + "exit"
-    # main loop for calling the players move function and verifying input
-    def move_player(self):
+
+    
+    def user_inputs(self, player_marker):
         print(self.board)
         # Move the line below me into the main game loop and instead
         choice = "10"
         while True:
             try:
-                choice = str(self.current_player.move(self.quit_string, self.board))
+                quit_string = " or ".join([", ".join(self.quitting_chars[:-1]),self.quitting_chars[-1]])
+                # quit_string = " or ".join(["Q, q",self.quitting_chars[-1]])
+                # quit_string = " or ".join(["Q, q","exit"])
+                # quit_string = "Q, q" + " or " + "exit"
+
+                choice = input(f'{player_marker} where do you want to move 0-8 or {quit_string} to quit: ')
                 if choice and choice in "0, 1, 2, 3, 4, 5, 6, 7, 8":  
                     if not self.check_taken(choice):               
-                        self.board.moves[int(choice)] = self.current_player.name
+                        self.board.moves[int(choice)] = player_marker
                         break
                 elif choice and choice.upper() in self.quitting_chars:
                     self.end_game()
@@ -109,6 +103,7 @@ class Game:
                 self.end_game()
                 
             # print(board)           
+   
 
     def end_game(self):
         # print("")
@@ -121,8 +116,7 @@ class Game:
         # we need to get the users choice of where to place their move
         for x in self.board.moves:
             os.system("cls")
-            self.current_player = next(self.player_turn)
-            self.move_player()
+            next(self.player_turn).move(self.user_inputs)
             
             # if self.check_win(x1):
             if self.check_win():
