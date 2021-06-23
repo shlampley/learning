@@ -121,8 +121,10 @@ class Game:
         # we need to get the users choice of where to place their move
         for x in self.board.moves:
             os.system("cls")
+
             self.current_player = next(self.player_turn)
             self.move_player()
+
             
             # if self.check_win(x1):
             if self.check_win():
