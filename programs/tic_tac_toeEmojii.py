@@ -5,7 +5,35 @@ class Player:
     def __init__(self, name):
         self.name = name
     
-    def move():   
+    def move(self):
+        print(self.board)
+        curr_turn = next(self.player_turn)
+        # Move the line below me into the main game loop and instead
+        choice = "10"
+        while True:
+            try:
+                quit_string = " or ".join([", ".join(self.quitting_chars[:-1]),self.quitting_chars[-1]])
+                # quit_string = " or ".join(["Q, q",self.quitting_chars[-1]])
+                # quit_string = " or ".join(["Q, q","exit"])
+                # quit_string = "Q, q" + " or " + "exit"
+
+                choice = input(f'{curr_turn.name} where do you want to move 0-8 or {quit_string} to quit: ')
+                if choice and choice in "0, 1, 2, 3, 4, 5, 6, 7, 8":  
+                    if not self.check_taken(choice):               
+                        self.board.moves[int(choice)] = curr_turn.name
+                        break
+                elif choice and choice.upper() in self.quitting_chars:
+                    self.end_game()
+                else:
+                    choice = "10"
+                    print("Invalid Input! Please try again")
+                
+
+              
+            except KeyboardInterrupt:
+                self.end_game()
+                
+            # print(board)           
         pass
         # TODO call game logic for non-bot to take a turn AKA getting input
         
@@ -20,6 +48,7 @@ class Board:
     def __init__(self):
         self.board = ""
         self.moves = self.set_empty_moves()
+        
 
         # self.win_board() = ########################
     def __str__(self):
@@ -73,35 +102,8 @@ class Game:
 
 
     
-    def user_inputs(self):
-        print(self.board)
-        curr_turn = next(self.players)
-        # Move the line below me into the main game loop and instead
-        choice = "10"
-        while True:
-            try:
-                quit_string = " or ".join([", ".join(self.quitting_chars[:-1]),self.quitting_chars[-1]])
-                # quit_string = " or ".join(["Q, q",self.quitting_chars[-1]])
-                # quit_string = " or ".join(["Q, q","exit"])
-                # quit_string = "Q, q" + " or " + "exit"
-
-                choice = input(f'{curr_turn} where do you want to move 0-8 or {quit_string} to quit: ')
-                if choice and choice in "0, 1, 2, 3, 4, 5, 6, 7, 8":  
-                    if not self.check_taken(choice):               
-                        self.board.moves[int(choice)] = curr_turn
-                        break
-                elif choice and choice.upper() in self.quitting_chars:
-                    self.end_game()
-                else:
-                    choice = "10"
-                    print("Invalid Input! Please try again")
-                
-
-              
-            except KeyboardInterrupt:
-                self.end_game()
-                
-            # print(board)   
+    #def user_inputs(self):
+   
 
     def end_game(self):
         # print("")
@@ -114,7 +116,7 @@ class Game:
         # we need to get the users choice of where to place their move
         for x in self.board.moves:
             os.system("cls")
-            self.user_inputs()
+            self.player_turn
             
             # if self.check_win(x1):
             if self.check_win():
@@ -127,11 +129,16 @@ class Game:
         return self.board
 
     def check_win(self):
+        print("made it")
         board = self.board
+        print(self.board)
         x_move = self.turns[0]
         o_move = self.turns[1]
+        print(x_move)
+        print(o_move)
         # Check diagonal
         # Check for X
+        print(board.moves)
         if board.moves[0] == x_move and board.moves[4] == x_move and board.moves[8] == x_move:
             self.winner = x_move
             return True
