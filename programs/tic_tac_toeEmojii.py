@@ -1,27 +1,7 @@
 from itertools import cycle
 import os
 import random
-
-class Player:
-    def __init__(self, name):
-        self.name = name
-    
-    def move(self, quit_string, board):
-        return input(f'{self.name} where do you want to move 0-8 or {quit_string} to quit: ')
-    # TODO call game logic for non-bot to take a turn AKA getting input
-         
-        
-    
-class Bot(Player):
-    def __init__(self, name):
-        super().__init__(name)
-    # CREATE BOT LOGIC
-    def move(self, quit_string, board):
-        # TODO: Write bot logic for taking a move here
-        ran_num = random.randint(0,8)
-        return ran_num
-        
-
+from minimax import Player, Bot
 
 class Board:
     def __init__(self):
@@ -81,7 +61,7 @@ class Game:
         else:
             return False    
 
-    def create_quit_string():
+    def create_quit_string(self):
         return " or ".join([", ".join(self.quitting_chars[:-1]),self.quitting_chars[-1]])
                 # quit_string = " or ".join(["Q, q",self.quitting_chars[-1]])
                 # quit_string = " or ".join(["Q, q","exit"])
@@ -138,16 +118,12 @@ class Game:
         return self.board
 
     def check_win(self):
-        print("made it")
         board = self.board
         print(self.board)
         x_move = self.turns[0]
         o_move = self.turns[1]
-        print(x_move)
-        print(o_move)
         # Check diagonal
         # Check for X
-        print(board.moves)
         if board.moves[0] == x_move and board.moves[4] == x_move and board.moves[8] == x_move:
             self.winner = x_move
             return True
