@@ -1,5 +1,6 @@
 import random
 from tic_tac_toeEmojii import Game
+import math
 
 class Player:
     def __init__(self, name):
@@ -16,19 +17,13 @@ class Bot(Player, Game):
         x_score = 1
         o_score = -1
         tie = 0
-    def best_move(self,depth, is_maximizing ):
-        if self.check_taken():
-            
-        result = self.check_win()
-        if result != True:
-            score = ""
-            score = score[result]
-            return True
-        if is_maximizing:
-
-
-
-
+    def best_move(self,depth, is_maximizing, choice ):
+        best_score = -math.inf
+        if self.check_win():
+            return self.x_score
+            score = minimax(self.board)
+            if score > best_score:
+                best_move = self.current_move
 
 
     # CREATE BOT LOGIC
