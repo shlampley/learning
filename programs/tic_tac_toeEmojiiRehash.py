@@ -53,11 +53,14 @@ class Bot(Player):
             best_score = -math.inf
             for i, move in enumerate(board.moves):
                 if not GU.is_taken(move):
-                    temp = board.moves[i]
-                    board.moves[i] = GU.turns[1]
-                    score = self.min_max(board, depth+1, False)
-                    board.moves[i] = temp
-                    best_score = max(score, best_score)
+                    if int(depth) < 5:
+                        temp = board.moves[i]
+                        board.moves[i] = GU.turns[1]
+                        score = self.min_max(board, depth+1, False)
+                        board.moves[i] = temp
+                        best_score = max(score, best_score)
+                    else:
+                        return max
             return best_score
         else:
             best_score = math.inf
