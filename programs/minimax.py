@@ -17,11 +17,11 @@ class Bot(Player, Game):
         x_score = 1
         o_score = -1
         tie = 0
-    def best_move(self,depth, is_maximizing, choice ):
+    def best_move(self,depth, is_maximizing, choice):
         best_score = -math.inf
         if self.check_win():
             return self.x_score
-            score = minimax(self.board)
+        elif score = minimax(self.board)
             if score > best_score:
                 best_move = self.current_move
 
